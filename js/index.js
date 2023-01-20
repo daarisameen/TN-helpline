@@ -20,7 +20,7 @@ if(localStorage.getItem("number")!="+91")
 }
 
 $("button").on("click",function(){
-  number=$("input").attr("value");
+  number=document.getElementById("mytext").value;
 
   $("#gaurd").attr("href","tel:"+number);
   if(number!="+91")
