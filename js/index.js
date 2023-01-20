@@ -17,14 +17,27 @@ if(localStorage.getItem("number")!="+91")
 {
   number = localStorage.getItem("number");
   $("#gaurd").attr("href","tel:"+number);
+  $("input").attr("hidden",true);
+  $("#button1").attr("hidden",true);
+  $("#button2").attr("hidden",false);
 }
 
-$("button").on("click",function(){
+$("#button1").on("click",function(){
   number=document.getElementById("mytext").value;
-
   $("#gaurd").attr("href","tel:"+number);
   if(number!="+91")
-    localStorage.setItem("number", number);
+    {
+      localStorage.setItem("number", number);
+      $("input").attr("hidden",true);
+      $("#button1").attr("hidden",true);
+      $("#button2").attr("hidden",false);
+    }
+});
+
+$("#button2").on("click",function(){
+  $("input").attr("hidden",false);
+  $("#button1").attr("hidden",false);
+  $("#button2").attr("hidden",true);
 });
 
 document.onkeydown = function(e) {
