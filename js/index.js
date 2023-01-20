@@ -13,18 +13,17 @@ function callme(){
   $("#status").animate({opacity:0.7}).animate({opacity:1.5});
 }
 
-if(localStorage.getItem("number")!=null)
+if(localStorage.getItem("number")!="+91")
 {
-
   number = localStorage.getItem("number");
   $("#gaurd").attr("href","tel:"+number);
 }
 
 $("button").on("click",function(){
-  number=prompt("உங்கள் பாதுகாவலர் தொலைபேசி எண்ணை உள்ளிடவும்");
+  number=$("input").attr("value");
 
   $("#gaurd").attr("href","tel:"+number);
-  if(number!=null)
+  if(number!="+91")
     localStorage.setItem("number", number);
 });
 
