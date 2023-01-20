@@ -3,6 +3,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 const d = new Date();
 let day = weekday[d.getDay()];
 var today = d.getHours();
+var number = 0;
 
 $(document).ready(function(){
   setInterval(callme,1500);
@@ -12,6 +13,20 @@ function callme(){
   $("#status").animate({opacity:0.7}).animate({opacity:1.5});
 }
 
+if(localStorage.getItem("number")!=null)
+{
+
+  number = localStorage.getItem("number");
+  $("#gaurd").attr("href","tel:"+number);
+}
+
+$("button").on("click",function(){
+  number=prompt("உங்கள் பாதுகாவலர் தொலைபேசி எண்ணை உள்ளிடவும்");
+
+  $("#gaurd").attr("href","tel:"+number);
+  if(number!=null)
+    localStorage.setItem("number", number);
+});
 
 document.onkeydown = function(e) {
   if(event.keyCode == 123) {
