@@ -40,12 +40,12 @@
       <div class="row">
 
         <div class="feature-box col-sm-4 col-lg-3">
-          <a href="#" id="gaurd"><img src="images/gaurd.jpg" alt="logo"  width="250" height="250"></a>
+          <a href="#" id="gaurd"><img src="images/gaurd.jpg" alt="logo"  width="240" height="240"></a>
           <p></p>
           <input style="margin:0;display:inline;" type="tel" size="14" name="phone" value="+91" id="mytext" placeholder="உங்கள் பாதுகாவலர் தொலைபேசி எண்ணை உள்ளிடவும்"> <button type="submit" class="btn btn-success" style="margin:0;display:inline;" id="button1">Save</button>
-          <button type="submit" class="btn btn-success" style="margin:0;display:inline;" id="button2">Edit Phone No</button>
+          <button type="submit" class="btn btn-success" style="margin:0;display:inline;"  id="button2">Edit Phone No</button>
         </div>
-        
+
         <div class="feature-box col-sm-4 col-lg-3">
           <a href="tel:100"><img src="images/police.jpg" alt="logo"  width="250" height="250"></a>
         </div>
@@ -108,18 +108,18 @@
           <a href="tel:1910"><img src="images/blood.jpg" alt="logo" width="250" height="250"></a>
         </div>
 
-        
 
       </div>
 
+      <button class="btn btn-dark btn-lg" onclick="getLocation()"><object data="images/google.svg" width="20" height="20"> </object> My Current Location (எனது தற்போதைய இடம்)</button>
+      <p></p>
+      <p id="demo"></p>
+      <div id="map"></div>
+
+
     </div>
 
-    <!-- <button type="button" class="btn btn-dark btn-lg download-button" id="lar" onclick="getlocation()" ><object data="images/google.svg" width="20" height="20"> </object> My Current Location</button>
-    <p id="demo1"></p>
-    <iframe class=map src="https://www.google.com/maps/place/" width="1200" height="550" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 
-    <!-- <div id="demo2"
-       style="width: 500px; height: 500px"></div> -->
   </section>
 
 
@@ -133,6 +133,9 @@
       <h5>Contribute more to this project @ <a href="https://github.com/daarisameen/TN-helpline" target="_blank"> GitHub </a></h5>
     </div>
   </footer>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
 
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <script src="js/index.js"></script>
