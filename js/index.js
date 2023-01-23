@@ -6,6 +6,9 @@ let day = weekday[d.getDay()];
 var today = d.getHours();
 var number = 0;
 
+
+
+
 $(document).ready(function(){
   setInterval(callme,1500);
 })
@@ -81,16 +84,33 @@ function showPosition(position) {
 
   $("#map").attr("hidden",false);
 
-  const uluru = { lat: x1, lng: y1 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 14,
-    center: uluru,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
+  var map = L.map('map').setView([x1, y1], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  var marker = L.marker([x1, y1]).addTo(map);
+  var circle = L.circle([x1, y1], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 1000
+  }).addTo(map);
+
+  marker.bindPopup("<b>You are here</b>").openPopup();
+  circle.bindPopup("approximate location");
+  var popup = L.popup();
+
+  function onMapClick(e) {
+      popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(map);
+  }
+
+  map.on('click', onMapClick);
+
+
+
 
 }
