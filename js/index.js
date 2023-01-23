@@ -84,31 +84,30 @@ function showPosition(position) {
 
   $("#map").attr("hidden",false);
 
-  var map = L.map('map').setView([x1, y1], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  var marker = L.marker([x1, y1]).addTo(map);
-  var circle = L.circle([x1, y1], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 1000
-  }).addTo(map);
+  var map = L.map('map').fitWorld();
 
-  marker.bindPopup("<b>You are here</b>").openPopup();
-  circle.bindPopup("approximate location");
-  var popup = L.popup();
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
 
-  function onMapClick(e) {
-      popup
-          .setLatLng(e.latlng)
-          .setContent("You clicked the map at " + e.latlng.toString())
-          .openOn(map);
-  }
+map.locate({setView: true, maxZoom: 16});
 
-  map.on('click', onMapClick);
+function onLocationFound(e) {
+    var radius = e.accuracy;
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+function onLocationError(e) {
+    alert(e.message);
+}
+
+map.on('locationerror', onLocationError);
 
 
 
