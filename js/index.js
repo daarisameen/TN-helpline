@@ -93,12 +93,12 @@ function showPosition(position) {
   var circle = L.circle([x1, y1], {
       color: 'red',
       fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 1000
+      fillOpacity: 0.1,
+      radius: 1400
   }).addTo(map);
 
-  marker.bindPopup("<b>You are here</b>").openPopup();
-  circle.bindPopup("approximate location");
+  marker.bindPopup("<b>Approx location</b>").openPopup();
+  circle.bindPopup("You are within this radius");
   var popup = L.popup();
 
   function onMapClick(e) {
